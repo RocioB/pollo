@@ -79,6 +79,8 @@ public class jumpScript : MonoBehaviour {
 				float velocity = rigidbody2D.velocity.x;
 				//Mathf.abs nos devuelve el valor absoluto de una variable
 				//Si hacemos Mathf.Abs (-10) nos devuelve 10 / -30=30
+		if ((fuerza > 0 & velocity < 0) || (fuerza < 0 & velocity > 0))
+						rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
 				if (Mathf.Abs (velocity) < maxSpeed)
 			//si la velocidad absoluta es menos de maxSpeed
 			//aplicamos una fuerza horizontal
