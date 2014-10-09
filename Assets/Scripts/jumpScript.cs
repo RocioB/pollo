@@ -9,6 +9,9 @@ public class jumpScript : MonoBehaviour {
 	public AudioClip sonidoHerido;
 	public AudioClip sonidoCurado;
 	private bool estaherido= false;
+	public void reiniciar () {
+				Application.LoadLevel ("Menu");
+		}
 
 
 	Animator animation; //esto es necesario para poder manejar las animaciones
@@ -63,6 +66,7 @@ public class jumpScript : MonoBehaviour {
 		AudioSource.PlayClipAtPoint(sonidoCurado, transform.position);
 		}
 
+
 	void OnCollisionEnter2D(Collision2D coll) {
 				Debug.Log ("Choque");
 		animation.SetBool ("fly", false);
@@ -71,6 +75,8 @@ public class jumpScript : MonoBehaviour {
 				 damage();
 		if (coll.gameObject.tag == "sombrero")
 						curar ();
+		if ((estaherido == true) & (coll.gameObject.tag == "enemy"))
+						reiniciar ();
 
 		}
 
